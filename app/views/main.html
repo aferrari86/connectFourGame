@@ -1,0 +1,17 @@
+<div class="container" ng-controller="MaintCtrl as vm">
+  <h2 class='playerHeadline'>{{ vm.gameStatus }}</h2>
+  <button ng-click='vm.createBoard()'>Restart</button>
+  <div layout='row' layout-align='center'>
+    <div>
+      <div layout="row">
+        <div ng-repeat="column in vm.builtBoard track by $index" class="left" ng-class="(vm.canPlay()) ? 'cursorPointer' : 'cursorNotAllowed'" ng-click='vm.move($index, column.length -1)'>
+          <div ng-repeat="row in column | reverse track by $index" >
+            <div class='board-square' ng-class="row === ''? 'white' : (row === 'X'? 'blue' : 'red')"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
